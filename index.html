@@ -1,96 +1,287 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js – The HTML Presentation Framework</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<img src="./images/react.png" alt="react">
-				</section>
-				<section>
-					<h2>What is React.js?</h2>
-					<ul>
-						<li>React is a JavaScript library - one of the most popular ones, with over 100,000 stars on GitHub.</li>
-						<li>React is not a framework (unlike Angular, which is more opinionated).</li>
-						<li>React is an open-source project created by Facebook.</li>
-						<li>React is used to build user interfaces (UI) on the front end.</li>
-						<li>React is the view layer of an MVC application (Model View Controller)</li>
-					</ul>
-				</section>
-				<section>
-					<h2>React Features</h2>
-					<ul>
-						<li>JSX</li>
-						<li>Components</li>
-						<li>Unidirectional data flow and Flux</li>
-						<li>License</li>
-					</ul><br>
-					<a href="#" class="navigate-down">
-						<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
-					</a>
-					<section>
-						<h2>JSX</h2>
-					</section>
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-				</section>
-				<section>
-					<ul>
-						<h2>React Advantages</h2>
-						<li>Uses virtual DOM</li>
-						<li>Can be used on client and server side</li>
-						<li>Component and data patterns improve readability</li>
-					</ul>
-				</section>
-				<section>
-					<ul>
-						<h2>React Limitations</h2>
-						<li>Covers only the view layer of the app</li>
-						<li>Uses inline templating and JSX</li>
-					</ul>
-				</section>
-				<section>
-					<ul>
-						<h2></h2>
-						<li></li>
-						<li></li>
-						<li></li>
-					</ul>
-				</section>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<img src="./images/react.png" alt="react">
+			<p>
+				<small>Presentation created by <a href="https://github.com/evgennn32">Yauheny Saladukha</a></small>
+			</p>
+		</section>
+
+		<section>
+			<h3>What is React.js?</h3>
+			<ul>
+				<li>React is a JavaScript library - one of the most popular ones, with over 100,000 stars on GitHub.</li>
+				<li>React is not a framework (unlike Angular, which is more opinionated).</li>
+				<li>React is an open-source project created by Facebook.</li>
+				<li>React is used to build user interfaces (UI) on the front end.</li>
+				<li>React is the view layer of an MVC application (Model View Controller)</li>
+			</ul>
+		</section>
+		<section>
+			<h3>React Features</h3>
+			<ul>
+				<li>JSX</li>
+				<li>Components and Props</li>
+				<li>State</li>
+				<li>Handling Events</li>
+				<li>Keys</li>
+			</ul><br>
+		</section>
+		<!-- JSX -->
+		<section>
+			<section>
+				<h3>JSX</h3>
+				<img src="./images/jsx.png" alt="jsx">
+			</section>
+			<section>
+				<h3>JSX - Syntactic sugar </h3>
+				<p>JSX code:</p>
+				<pre><code class="hljs html" style="word-wrap: break-word;"><script type="text/template">
+          <MyButton color="blue" shadowSize={2}>
+  Click Me
+        </MyButton>
+        </script></code></pre>
+				Compiles to:
+				<pre><code class="hljs html" style="word-wrap: break-word;"><script type="text/template">
+				React.createElement(
+					MyButton,
+					{color: 'blue', shadowSize: 2},
+					'Click Me'
+				)
+        </script></code></pre>
+			</section>
+
+		</section>
+
+		<!-- Components -->
+		<section>
+			<section>
+				<h3>Components and Props</h3>
+				<img src="./images/components.png" alt="components">
+
+			</section>
+
+			<section>
+				<h3>Creating component</h3>
+				<h4>JavaScript function</h4>
+				<pre><code class="hljs html" style="word-wrap: break-word;"><script type="text/template">
+function Welcome(props) {
+return <h1>Hello, {props.name}</h1>;
+}
+        </script></code></pre>
+				<h4>ES6 class:</h4>
+				<pre><code class="hljs html" style="word-wrap: break-word;"><script type="text/template">
+class Welcome extends React.Component {
+	render() {
+		return <h1>Hello, {this.props.name}</h1>;
+	}
+}
+        </script></code></pre>
+			</section>
+			<section>
+				<h3>Rendering a Component</h3>
+				<pre><code class="hljs html" style="word-wrap: break-word;"><script type="text/template">
+function Welcome(props) {
+	return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+ReactDOM.render(
+	element,
+	document.getElementById('root')
+);
+</script></code></pre>
+			</section>
+			<section>
+				<h3>Composing Components</h3>
+				<p>Components can refer to other components in their output</p>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+function Welcome(props) {
+	return <h1>Hello, {props.name}</h1>;
+}
+
+function App() {
+	return (
+	<div>
+				<Welcome name="Sara" />
+				<Welcome name="Cahal" />
+				<Welcome name="Edite" />
 			</div>
-		</div>
+	);
+}
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
+ReactDOM.render(
+	<App />,
+	document.getElementById('root')
+);
+        </script></code></pre>
+			</section>
+			<section>
+				<h3>Props are Read-Only</h3>
+				<h4>Never modify component own props</h4>
+				<p>"pure" function:</p>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+function sum(a, b) {
+	return a + b;
+}
+        </script></code></pre>
+				<p>"impure" function:</p>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+function withdraw(account, amount) {
+	account.total -= amount;
+}
+        </script></code></pre>
+			</section>
 
-			// Also available as an ES module, see:
-			// https://revealjs.com/initialization/
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				center: true,
-				hash: true,
+		</section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealNotes, RevealMarkdown, RevealHighlight ]
-			});
+		<!-- State -->
+		<section>
+			<section>
+				<h3>What Is ‘State’ in ReactJS?</h3>
+				<img src="./images/state.jpg" alt="components">
+			</section>
 
-		</script>
-	</body>
+			<section>
+				<h3>What is the difference between state and props?</h3>
+				<img src="./images/props-_vs_state.png" alt="components">
+			</section>
+			<section>
+				<h3> The setState() Method</h3>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+class Bike extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = { make: "Yamaha", model: "R15", color: "blue" };
+	}
+
+	changeBikeColor = () => {
+		this.setState({color: "black"});
+	}
+
+	render() {
+	return (
+	<div>
+					<h3>My {this.state.make}</h3>
+					<p>It is a {this.state.color} {this.state.model}.</p>
+					<button type="button"
+									onClick={this.changeBikeColor} >
+						Change color
+					</button>
+				</div>
+	);
+	}
+}
+        </script></code></pre>
+			</section>
+
+		</section>
+
+		<!-- Events -->
+		<section>
+			<h3>Handling Events</h3>
+			<p>For example, the HTML:</p>
+			<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+<button onclick="activateLasers()">
+  Activate Lasers
+</button>        </script></code></pre>
+			<p>is slightly different in React:</p>
+			<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+        </script></code></pre>
+		</section>
+
+		<!-- Keys -->
+		<section>
+
+			<section>
+				<h3>Keys</h3>
+				<p>Keys help React identify which items have changed, are added, or are removed</p>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+<li key={number.toString()}>
+    {number}
+  </li>
+);
+        </script></code></pre>
+
+			</section>
+			<section>
+				<p>The best way to pick a key is to use a string that uniquely identifies a list item among its siblings</p>
+				<pre><code class=" " style="word-wrap: break-word;"><script type="text/template">
+const todoItems = todos.map((todo) =>
+<li key={todo.id}>
+    {todo.text}
+  </li>
+);
+        </script></code></pre>
+			</section>
+		</section>
+		<!-- Thinking  -->
+		<section>
+			<h3>Thinking in React</h3>
+			<img src="./images/thinking.png" alt="components">
+		</section>
+		<section>
+			<h1>Think you!</h1>
+		</section>
+	</div>
+
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/zoom/zoom.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/search/search.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+
+	// Also available as an ES module, see:
+	// https://revealjs.com/initialization/
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		center: true,
+		hash: true,
+
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+	});
+
+</script>
+
+</body>
 </html>
